@@ -69,7 +69,12 @@ set(MAN_INSTALL_DIR ${SHARE_INSTALL_DIR}/man
 file(GLOB installModuleFiles ${CMAKE_SOURCE_DIR}/modules/*[^~])
 install(FILES ${installModuleFiles} DESTINATION ${MODULES_INSTALL_DIR})
 
-file(GLOB installFindModuleFiles ${CMAKE_SOURCE_DIR}/find-modules/*.cmake ${CMAKE_SOURCE_DIR}/find-modules/*.py)
+file(GLOB installFindModuleFiles 
+    ${CMAKE_SOURCE_DIR}/find-modules/*.cmake
+    ${CMAKE_SOURCE_DIR}/find-modules/*.py
+    ${CMAKE_SOURCE_DIR}/find-modules/*.cpp
+    ${CMAKE_SOURCE_DIR}/find-modules/*.c
+)
 install(FILES ${installFindModuleFiles} DESTINATION ${FIND_MODULES_INSTALL_DIR})
 
 file(GLOB installToolchainModuleFiles ${CMAKE_SOURCE_DIR}/toolchain/*[^~])
@@ -84,6 +89,7 @@ configure_package_config_file(
     INSTALL_DESTINATION
         ${CMAKECONFIG_INSTALL_DIR}
     PATH_VARS
+        CMAKECONFIG_INSTALL_DIR
         FIND_MODULES_INSTALL_DIR
         MODULES_INSTALL_DIR
         TOOLCHAIN_INSTALL_DIR

@@ -59,7 +59,7 @@ macro (create_config_files _packagename)
 	if (WIN32 AND NOT CYGWIN)
 		set (DEF_INSTALL_CMAKE_DIR CMake)
 	else ()
-		set (DEF_INSTALL_CMAKE_DIR lib/cmake/${_packagename})
+		set (DEF_INSTALL_CMAKE_DIR ${ARPA2CM_CMAKECONFIG_DIR})
 	endif ()
 	set (INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
 		"Installation directory for CMake files")

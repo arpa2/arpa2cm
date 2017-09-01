@@ -12,7 +12,7 @@ macro(add_uninstall_target)
 	# least to most specific.
 	set(_uninstall_in "")
 	foreach(_uninstall_in_candidate
-		"${ARPA2CM_TOOLCHAIN_DIR}/cmake_uninstall.cmake.in"
+		"${ARPA2CM_MODULE_DIR}/cmake_uninstall.cmake.in"
 		"${CMAKE_CURRENT_LIST_DIR}/cmake_uninstall.cmake.in"
 		"${CMAKE_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in")
 		if(EXISTS ${_uninstall_in_candidate})

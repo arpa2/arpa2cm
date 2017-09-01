@@ -30,7 +30,7 @@ macro (create_config_file_internal _packagename _bstype _filename)
 	# Find the .in files
 	set(_configfile_in "")
 	foreach(_configfile_in_candidate
-		"${ARPA2CM_TOOLCHAIN_DIR}/${_filename}.in"
+		"${ARPA2CM_MODULE_DIR}/${_filename}.in"
 		"${CMAKE_CURRENT_LIST_DIR}/${_filename}.in"
 		"${CMAKE_CURRENT_LIST_DIR}/${_packagename}${_filename}.in"
 		"${CMAKE_SOURCE_DIR}/${_bstype}/${_filename}.in"

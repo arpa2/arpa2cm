@@ -64,6 +64,12 @@ itself. These are supported by the modules in the `modules/` directory.
 They may be useful for other projects as well; they duplicate functionality
 found in KDE ECM and elsewhere.
 
+ - *MacroAddUninstallTarget* is boilerplate code from the CMake wiki,
+   adding an `uninstall` target to the build.
+ - *MacroCreateConfigFiles* creates standard config-files for the current
+   project. These are the `Config.cmake`, `ConfigVersion.cmake` and `.pc`
+   files that can be used by CMake and pkg-config to find the current
+   project once it is installed.
  - *MacroEnsureOutOfSourceBuild* complains when building in-source; most
    ARPA2 software has a top-level `Makefile` that creates a separate build-
    directory and runs CMake there. This macro helps ensure that we don't
@@ -71,6 +77,9 @@ found in KDE ECM and elsewhere.
  - *MacroGitVersionInfo* uses `git describe` to assign a version number
    if there is a git checkout available; ARPA2 projects should still contain
    version information for non-git source distribution.
+ - *PackAllPossible* queries the build system to find out which packaging
+   mechanisms are available, and configures CPack to use all of them.
+
 
 ### ARPA2 Toolchain
 

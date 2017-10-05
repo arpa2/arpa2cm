@@ -3,6 +3,9 @@
 #
 # Adriaan de Groot <groot@kde.org>
 
+# SPDX-License-Identifier: BSD-2-Clause
+# License-Filename: LICENSES/BSD-2-Clause.iww.degroot
+
 # Try to find log4cpp libraries. Sets standard variables
 # LOG4CPP_LIBRARIES and LOG4CPP_INCLUDE_DIRS. If there is no
 # installed package, you can use LOG4CPP_PREFIX to tell
@@ -30,7 +33,7 @@ else (_L4CPP)
   set(LOG4CPP_DEFINITIONS -DNDEBUG)
 endif (_L4CPP)
 
-find_package_handle_standard_args(LOG4CPP 
+find_package_handle_standard_args(LOG4CPP
   REQUIRED_VARS LOG4CPP_LIBRARIES LOG4CPP_INCLUDE_DIRS LOG4CPP_DEFINITIONS)
 
 if (_L4CPP)

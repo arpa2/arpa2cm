@@ -23,8 +23,8 @@
 # Copyright 2017, Adriaan de Groot <groot@kde.org>
 #
 # Redistribution and use is allowed according to the terms of the two-clause BSD license.
-#    https://opensource.org/licenses/BSD-2-Clause
-#    SPDX short identifier: BSD-2-Clause
+#    SPDX-License-Identifier: BSD-2-Clause.degroot
+#    License-Filename: LICENSES/BSD-2-Clause.degroot
 
 macro (create_config_file_internal _packagename _bstype _filename)
 	# Find the .in files

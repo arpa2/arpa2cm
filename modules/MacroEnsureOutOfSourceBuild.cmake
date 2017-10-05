@@ -8,6 +8,9 @@
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+#
+# SPDX-License-Identifier: BSD-3-Clause
+# License-Filename: LICENSES/BSD-3-Clause.neundorf
 
 MACRO (MACRO_ENSURE_OUT_OF_SOURCE_BUILD _errorMessage)
 

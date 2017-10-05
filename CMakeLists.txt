@@ -1,13 +1,15 @@
 #=============================================================================
-# Copyright 2006-2013 Alex Neundorf <neundorf@kde.org>
-# Copyright 2014-2015 Alex Merry <alex.merry@kde.org>
-# Copyright 2017      Adriaan de Groot <groot@kde.org>
 #
 # This is ARPA2CM, a collection of CMake modules for the ARPA2 project.
 # The structure and top-level of this collection is derived from the
 # KDE Extra CMake Modules.
 #
 #=============================================================================
+#
+# Copyright 2006-2013 Alex Neundorf <neundorf@kde.org>
+# Copyright 2014-2015 Alex Merry <alex.merry@kde.org>
+# Copyright 2017      Adriaan de Groot <groot@kde.org>
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
 # are met:
@@ -30,7 +32,11 @@
 # THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
 #=============================================================================
+#
+# SPDX-License-Identifier: BSD-3-Clause
+# License-Filename: LICENSES/BSD-3-Clause.neundorf.merry.degroot
 
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
@@ -69,7 +75,7 @@ set(MAN_INSTALL_DIR ${SHARE_INSTALL_DIR}/man
 file(GLOB installModuleFiles ${CMAKE_SOURCE_DIR}/modules/*[^~])
 install(FILES ${installModuleFiles} DESTINATION ${MODULES_INSTALL_DIR})
 
-file(GLOB installFindModuleFiles 
+file(GLOB installFindModuleFiles
     ${CMAKE_SOURCE_DIR}/find-modules/*.cmake
     ${CMAKE_SOURCE_DIR}/find-modules/*.py
     ${CMAKE_SOURCE_DIR}/find-modules/*.cpp

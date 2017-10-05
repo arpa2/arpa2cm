@@ -23,8 +23,8 @@
 # Copyright 2017, Rick van Rein <rick@openfortress.nl>
 #
 # Redistribution and use is allowed according to the terms of the two-clause BSD license.
-#    https://opensource.org/licenses/BSD-2-Clause
-#    SPDX short identifier: BSD-2-Clause
+#    SPDX-License-Identifier: BSD-2-Clause.vanrein
+#    License-Filename: LICENSES/BSD-2-Clause.vanrein
 
 
 # Always produce a source tar ball

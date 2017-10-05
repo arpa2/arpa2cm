@@ -3,6 +3,9 @@
 #
 # Adriaan de Groot <groot@kde.org>
 
+# SPDX-License-Identifier: BSD-2-Clause
+# License-Filename: LICENSES/BSD-2-Clause.iww.degroot
+
 # Try to find OpenLDAP client libraries. Sets standard variables
 # OpenLDAP_LIBRARIES and OpenLDAP_INCLUDE_DIRS.
 #

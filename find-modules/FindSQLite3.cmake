@@ -15,6 +15,9 @@
 # SQLITE3_LIBRARIES	- List of libraries when using sqlite.
 # SQLITE3_FOUND	- True if sqlite found.
 
+# SPDX-License-Identifier: MIT
+# License-Filename: LICENSES/MIT.lua
+
 # Look for the header file.
 FIND_PATH(SQLITE3_INCLUDE_DIR NAMES sqlite3.h)
 

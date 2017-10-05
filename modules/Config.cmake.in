@@ -1,0 +1,4 @@
+# - Config file for the @PACKAGENAME@ package
+#
+# It defines no variables, and only tells CMake that the package is available.
+

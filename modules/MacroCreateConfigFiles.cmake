@@ -26,6 +26,14 @@
 #    SPDX-License-Identifier: BSD-2-Clause.degroot
 #    License-Filename: LICENSES/BSD-2-Clause.degroot
 
+include(CMakePackageConfigHelpers)
+
+set(SHARE_INSTALL_DIR share
+    CACHE
+    PATH
+    "read-only architecture-independent data"
+)
+
 macro (create_config_file_internal _packagename _bstype _filename)
 	# Find the .in files
 	set(_configfile_in "")
@@ -54,12 +62,15 @@ endmacro()
 
 macro (create_config_files _packagename)
 	export (PACKAGE ${_packagename})
+	
+	cmake_parse_arguments(ARPA2CM_CCF "NO_PKGCONFIG" "" "" ${ARGN})
+	
 	# The CMake configuration files are written to different locations
 	# depending on the host platform, since different conventions apply.
 	if (WIN32 AND NOT CYGWIN)
 		set (DEF_INSTALL_CMAKE_DIR CMake)
 	else ()
-		set (DEF_INSTALL_CMAKE_DIR ${ARPA2CM_CMAKECONFIG_DIR})
+		set (DEF_INSTALL_CMAKE_DIR ${SHARE_INSTALL_DIR}/${_packagename}/cmake/)
 	endif ()
 	set (INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
 		"Installation directory for CMake files")
@@ -74,14 +85,20 @@ macro (create_config_files _packagename)
 	set (_conf_version ${${_packagename}_VERSION})
 
 	create_config_file_internal(${_packagename} cmake Config.cmake)
-	create_config_file_internal(${_packagename} cmake ConfigVersion.cmake)
-	create_config_file_internal(${_packagename} pkgconfig .pc)
+	if (NOT ARPA2CM_CCF_NO_PKGCONFIG)
+		create_config_file_internal(${_packagename} pkgconfig .pc)
+		install (FILES
+			"${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${_packagename}.pc"
+			DESTINATION "lib/pkgconfig/")
+	endif()
+
+	write_basic_package_version_file(
+		${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${_packagename}ConfigVersion.cmake
+		VERSION ${${_packagename}_VERSION}
+		COMPATIBILITY SameMajorVersion )
 
 	install (FILES
 		"${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${_packagename}Config.cmake"
 		"${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${_packagename}ConfigVersion.cmake"
 		DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
-	install (FILES
-		"${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${_packagename}.pc"
-		DESTINATION "lib/pkgconfig/")
 endmacro ()

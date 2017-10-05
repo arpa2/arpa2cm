@@ -40,7 +40,7 @@
 
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
-set(VERSION "0.1") # handled by release scripts
+set(VERSION "0.2")
 
 cmake_policy(SET CMP0048 NEW)
 project(ARPA2CM VERSION "${VERSION}" LANGUAGES NONE)

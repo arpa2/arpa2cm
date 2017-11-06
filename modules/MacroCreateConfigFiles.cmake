@@ -89,7 +89,8 @@ macro (create_config_files _packagename)
 		create_config_file_internal(${_packagename} pkgconfig .pc)
 		install (FILES
 			"${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${_packagename}.pc"
-			DESTINATION "lib/pkgconfig/")
+			DESTINATION "lib/pkgconfig/"
+			COMPONENT dev)
 	endif()
 
 	write_basic_package_version_file(

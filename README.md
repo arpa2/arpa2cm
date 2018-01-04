@@ -27,7 +27,8 @@ added to your `CMAKE_MODULE_PATH`. Typical use looks like so:
     set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ARPA2CM_MODULE_PATH})
 ```
 
-Once this is done, the ARPA2 CM provides the following modules:
+Once this is done, the ARPA2 CM modules listed below can be used
+with `include(<module>)` or `find_package(<module>)`.
 
 ### Find Modules
 

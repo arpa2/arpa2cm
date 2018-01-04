@@ -89,6 +89,20 @@ CMake modules here, to support tools from those parts of the stack. E.g.,
 Quick-DER installs CMake modules here to help build bindings for ASN.1
 syntax definitions.
 
+## Building ARPA2CM
+
+ARPA2CM uses [CMake](https://cmake.org/) to build; you will need at least
+version 3.2.
+
+There is a convenience `Makefile` included, which will create a build
+directory and build ARPA2CM. If your typical install prefix is `/usr/local`
+then all you need to do is run `make all install`. To install to
+a different prefix, use `make all install PREFIX=/path/prefix`.
+
+For more fine-tuning of the build, use CMake directly -- the convenience
+`Makefile` is there only for certain common cases (or, to be honest,
+for my own convenience).
+
 ## LICENSE
 
 The [BSD 2-clause license](LICENSE) applies to the collection of ARPA2CM 

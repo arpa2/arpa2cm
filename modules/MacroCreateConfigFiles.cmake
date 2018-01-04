@@ -101,5 +101,6 @@ macro (create_config_files _packagename)
 	install (FILES
 		"${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${_packagename}Config.cmake"
 		"${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${_packagename}ConfigVersion.cmake"
-		DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
+		DESTINATION "${INSTALL_CMAKE_DIR}"
+		COMPONENT dev)
 endmacro ()

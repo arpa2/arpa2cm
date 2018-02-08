@@ -64,6 +64,7 @@ macro(get_version_from_git _appname _default)
 		# Same exit codes as diff: 0 for no changes, 1 for changes,
 		# but git can also error out (e.g. not-a-git-repo).
 		if (GIT_HAVE_CHANGES EQUAL 129)
+			message(WARNING "Git repository not found: git-versioning uses default ${_default_ver}.")
 			set (GIT_HAVE_CHANGES 0)
 			set (GIT_VERSION_INFO "version-${_default_ver}")
 		else()
@@ -76,6 +77,7 @@ macro(get_version_from_git _appname _default)
 			)
 			if (GIT_HAVE_VERSION)
 				# Non-zero exit, so describe failed; usually missing tags
+				message(WARNING "Git repository missing tags: git-versioning uses default ${_default_ver}.")
 				set(GIT_VERSION_INFO "version-${_default_ver}")
 			endif()
 		endif()

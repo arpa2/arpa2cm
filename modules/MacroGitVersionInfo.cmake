@@ -19,12 +19,17 @@
 # overall <app>_VERSION. If git can't be found or does not Produce
 # meaningful output, use the provided default, e.g.:
 #
-#   get_version_from_git(Quick-DER 0.1.5)
+#   get_version_from_git(Quick-DER 0.1-5)
 #
 # After the macro invocation, Quick-DER_VERSION is set according
-# to the git tag or 0.1.5.
+# to the git tag or 0.1.5. Note that the provided default version
+# **MUST** have the format x.y-z (with a dash) or x.y (in which
+# case -0 is assumed). Format x.y is preferred.
 #
+# Git tags **MUST** have names like "version-x.y" (including
+# the "version-" prefix).
 
+# Copyright 2017, Rick van Rein <rick@openfortress.nl>
 # Copyright 2017, Adriaan de Groot <groot@kde.org>
 #
 # Redistribution and use is allowed according to the terms of the two-clause BSD license.

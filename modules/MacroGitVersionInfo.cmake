@@ -40,7 +40,7 @@ macro(get_version_from_git _appname _default)
 	find_package (Git QUIET)
 
 	if (Git_FOUND)
-		message("-- Looking for git-versioning information.")
+		message(STATUS "Looking for git-versioning information.")
 		exec_program (
 			${GIT_EXECUTABLE}
 			${CMAKE_CURRENT_SOURCE_DIR}
@@ -96,7 +96,7 @@ macro(get_version_from_git _appname _default)
 			OUTPUT_VARIABLE GIT_CHANGES_TIMESTAMP
 		)
 		set (GIT_VERSION_PATCHLEVEL "local-${GIT_CHANGES_TIMESTAMP}")
-		message ("  Git reports local changes, fixing patch level to local-${GIT_CHANGES_TIMESTAMP}")
+		message (STATUS "Git reports local changes, fixing patch level to local-${GIT_CHANGES_TIMESTAMP}")
 
 		unset (USER_SUPPLIED_PATCHLEVEL CACHE)
 
@@ -108,6 +108,6 @@ macro(get_version_from_git _appname _default)
 	set(${_appname}_VERSION ${GIT_VERSION_MAJOR}.${GIT_VERSION_MINOR}.${GIT_VERSION_PATCHLEVEL})
 
 	if(Git_FOUND)
-		message("  Got version ${${_appname}_VERSION}")
+		message(STATUS "Got version ${${_appname}_VERSION}")
 	endif()
 endmacro()

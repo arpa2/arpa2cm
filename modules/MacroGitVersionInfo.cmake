@@ -39,6 +39,19 @@
 macro(get_version_from_git _appname _default)
 	find_package (Git QUIET)
 
+	if (${_default} MATCHES "^([1-9][0-9]*|0)[.]([1-9][0-9]*|0)-(.*)$")
+		# x.y-z flavor; that's weird but acceptable
+		set (_default_ver ${_default})
+	elseif (${_default} MATCHES "^([1-9][0-9]*|0)[.]([1-9][0-9]*|0)$")
+		# x.y (no trailing -z), fix it up because later code
+		# expects version-x.y-z output from git.
+		set (_default_ver ${_default}-0)
+	else()
+		message(WARNING "Default version ${_default} for ${_appname} is poorly formatted.")
+		# Keep it anyway
+		set (_default_ver ${_default})
+	endif()
+
 	if (Git_FOUND)
 		message(STATUS "Looking for git-versioning information.")
 		exec_program (
@@ -48,15 +61,22 @@ macro(get_version_from_git _appname _default)
 			RETURN_VALUE GIT_HAVE_CHANGES
 		)
 
-		exec_program (
-			${GIT_EXECUTABLE}
-			${CMAKE_CURRENT_SOURCE_DIR}
-			ARGS describe --tags --match 'version-*.*-*'
-			OUTPUT_VARIABLE GIT_VERSION_INFO
-		)
+		# Same exit codes as diff: 0 for no changes, 1 for changes,
+		# but git can also error out (e.g. not-a-git-repo).
+		if (GIT_HAVE_CHANGES EQUAL 129)
+			set (GIT_HAVE_CHANGES 0)
+			set (GIT_VERSION_INFO "version-${_default_ver}")
+		else()
+			exec_program (
+				${GIT_EXECUTABLE}
+				${CMAKE_CURRENT_SOURCE_DIR}
+				ARGS describe --tags --match 'version-*.*-*'
+				OUTPUT_VARIABLE GIT_VERSION_INFO
+			)
+		endif()
 	else(NOT Git_FOUND)
-		message(WARNING "Git not found; git-versioning uses default ${_default}.")
-		set(GIT_VERSION_INFO "version-${_default}")
+		message(WARNING "Git not found; git-versioning uses default ${_default_ver}.")
+		set(GIT_VERSION_INFO "version-${_default_ver}")
 		set(GIT_HAVE_CHANGES 0)
 	endif()
 

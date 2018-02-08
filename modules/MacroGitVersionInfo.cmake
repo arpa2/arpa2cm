@@ -72,7 +72,12 @@ macro(get_version_from_git _appname _default)
 				${CMAKE_CURRENT_SOURCE_DIR}
 				ARGS describe --tags --match 'version-*.*-*'
 				OUTPUT_VARIABLE GIT_VERSION_INFO
+				RETURN_VALUE GIT_HAVE_VERSION
 			)
+			if (GIT_HAVE_VERSION)
+				# Non-zero exit, so describe failed; usually missing tags
+				set(GIT_VERSION_INFO "version-${_default_ver}")
+			endif()
 		endif()
 	else(NOT Git_FOUND)
 		message(WARNING "Git not found; git-versioning uses default ${_default_ver}.")

@@ -21,7 +21,7 @@ on KDE ECM as well. These duplicates are documented later.
 When ARPA2 CMake Modules are installed, use `find_package()` to find the
 modules. This sets one variable, `ARPA2CM_MODULE_PATH`, which should be
 added to your `CMAKE_MODULE_PATH`. Good-practice use with polite error
-reporting looks like so (see also the [CMake example snippet](CMakeLists.example.txt):
+reporting looks like so (see also the [CMake example snippet](CMakeLists.example.txt)):
 
 ```
 # Pretty reporting of packages

@@ -55,11 +55,12 @@ set(SHARE_INSTALL_DIR share
     "read-only architecture-independent data"
 )
 
-set(CMAKECONFIG_INSTALL_DIR       ${SHARE_INSTALL_DIR}/ARPA2CM/cmake/)
+set(ARPA2CM_INSTALL_DIR           ${SHARE_INSTALL_DIR}/ARPA2CM)
 
-set(FIND_MODULES_INSTALL_DIR      ${SHARE_INSTALL_DIR}/ARPA2CM/find-modules/)
-set(MODULES_INSTALL_DIR           ${SHARE_INSTALL_DIR}/ARPA2CM/modules/)
-set(TOOLCHAIN_INSTALL_DIR ${SHARE_INSTALL_DIR}/ARPA2CM/toolchain/)
+set(CMAKECONFIG_INSTALL_DIR       ${ARPA2CM_INSTALL_DIR}/cmake/)
+set(FIND_MODULES_INSTALL_DIR      ${ARPA2CM_INSTALL_DIR}/find-modules/)
+set(MODULES_INSTALL_DIR           ${ARPA2CM_INSTALL_DIR}/modules/)
+set(TOOLCHAIN_INSTALL_DIR         ${ARPA2CM_INSTALL_DIR}/toolchain/)
 
 set(MAN_INSTALL_DIR ${SHARE_INSTALL_DIR}/man
     CACHE
@@ -86,6 +87,7 @@ install(FILES ${installFindModuleFiles} DESTINATION ${FIND_MODULES_INSTALL_DIR})
 file(GLOB installToolchainModuleFiles ${CMAKE_SOURCE_DIR}/toolchain/*[^~])
 install(FILES ${installToolchainModuleFiles} DESTINATION ${TOOLCHAIN_INSTALL_DIR})
 
+install(FILES README.md CMakeLists.example.txt DESTINATION ${ARPA2CM_INSTALL_DIR}/doc)
 
 include(CMakePackageConfigHelpers)
 

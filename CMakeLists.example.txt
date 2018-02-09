@@ -1,0 +1,25 @@
+# This example CMakeLists.txt shows how to politely look for
+# ARPA2CM and report back errors if it is not found. It adds
+# the ARPA2CM modules search path to CMake so that you can then
+# use any of the ARPA2CM modules via include().
+
+# Pretty reporting of packages
+include (FeatureSummary)
+
+# Look for the module itself. Set properties here, because ARPA2CM
+# might not be installed to set them itself.
+find_package (ARPA2CM 0.5 QUIET NO_MODULE)
+set_package_properties (ARPA2CM PROPERTIES
+    DESCRIPTION "CMake modules for ARPA2 projects"
+    TYPE REQUIRED
+    URL "https://github.com/arpa2/arpa2cm/"
+    PURPOSE "Required for the CMake build system for ${PROJECT}"
+)
+
+# If found, use it, otherwise report error and stop CMake.
+if (ARPA2CM_FOUND)
+    set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ARPA2CM_MODULE_PATH})
+else()
+    feature_summary (WHAT ALL)
+    message (FATAL_ERROR "ARPA2CM is required.")
+endif()

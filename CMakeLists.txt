@@ -8,7 +8,7 @@
 #
 # Copyright 2006-2013 Alex Neundorf <neundorf@kde.org>
 # Copyright 2014-2015 Alex Merry <alex.merry@kde.org>
-# Copyright 2017      Adriaan de Groot <groot@kde.org>
+# Copyright 2017,2019 Adriaan de Groot <groot@kde.org>
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -40,7 +40,7 @@
 
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
-set(VERSION "0.5")
+set(VERSION "0.6")
 
 cmake_policy(SET CMP0048 NEW)
 project(ARPA2CM VERSION "${VERSION}" LANGUAGES NONE)

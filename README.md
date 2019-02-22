@@ -49,6 +49,13 @@ endif()
 Once this is done, the ARPA2 CM modules listed below can be used
 with `include(<module>)` or `find_package(<module>)`.
 
+The quick-and-dirty approach to using ARPA2CM is this:
+
+```
+find_package (ARPA2CM QUIET NO_MODULE REQUIRED)
+set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ARPA2CM_MODULE_PATH})
+```
+
 ### Find Modules
 
 Each of these modules defines `_LIBRARIES` and `_INCLUDE_DIRECTORIES`
@@ -99,7 +106,8 @@ found in KDE ECM and elsewhere.
    version information for non-git source distribution.
  - *PackAllPossible* queries the build system to find out which packaging
    mechanisms are available, and configures CPack to use all of them.
-
+ - *PythonSupport* provides some simplistic helper functions for working
+   with Python 3, which is the preferred Python version for use with ARPA2.
 
 ### ARPA2 Toolchain
 

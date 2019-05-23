@@ -116,12 +116,19 @@ macro(get_version_from_git _appname _default)
 		)
 
 	else()
+		if("${CMAKE_HOST_SYSTEM}" MATCHES ".*Windows.*")
+			execute_process (
+				COMMAND "PowerShell" "-Command" "& {Get-Date -UFormat \"%Y%m%d-%H%M%S\" | Write-Host -NoNewline}"
+				OUTPUT_VARIABLE GIT_CHANGES_TIMESTAMP
+			)
+		else()
+			exec_program (
+				date
+				ARGS '+%Y%m%d-%H%M%S'
+				OUTPUT_VARIABLE GIT_CHANGES_TIMESTAMP
+			)
+		endif()
 
-		exec_program (
-			date
-			ARGS '+%Y%m%d-%H%M%S'
-			OUTPUT_VARIABLE GIT_CHANGES_TIMESTAMP
-		)
 		set (GIT_VERSION_PATCHLEVEL "local-${GIT_CHANGES_TIMESTAMP}")
 		message (STATUS "Git reports local changes, fixing patch level to local-${GIT_CHANGES_TIMESTAMP}")
 

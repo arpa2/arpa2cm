@@ -38,7 +38,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # License-Filename: LICENSES/BSD-3-Clause.neundorf.merry.degroot
 
-cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
 
 set(VERSION "0.6")
 
